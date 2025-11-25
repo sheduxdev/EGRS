@@ -1,0 +1,6 @@
+name: ${name}
+version: ${version}
+main: dev.shedux.egrs.EGRS
+api-version: ${apiVersion}
+load: POSTWORLD
+authors: [ sheduxdev ]

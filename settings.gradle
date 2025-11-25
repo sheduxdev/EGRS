@@ -1,0 +1,50 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+
+        maven {
+            name = "papermc-repo"
+            url = "https://repo.papermc.io/repository/maven-public/"
+        }
+
+        maven {
+            name = "j4c0b3y"
+            url = "https://repo.j4c0b3y.net/public/"
+        }
+    }
+}
+
+def props = new Properties()
+def propsFile = file("gradle.properties")
+
+if (propsFile.exists()) {
+    propsFile.withInputStream {
+        props.load(it)
+    }
+}
+
+rootProject.name = props.getProperty("projectName")
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+
+        maven {
+            name = "papermc-repo"
+            url = "https://repo.papermc.io/repository/maven-public/"
+        }
+
+        maven {
+            name = "j4c0b3y"
+            url = "https://repo.j4c0b3y.net/public/"
+        }
+    }
+}
+
+buildCache {
+    local {
+        enabled = true
+        directory = new File(rootDir, ".gradle/build-cache")
+    }
+}
